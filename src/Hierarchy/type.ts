@@ -8,7 +8,6 @@ interface Props {
   data: any[];
   textField: string;
   childField: string;
-  buttonName?: string;
   onSelect: (data: any) => void;
 }
 

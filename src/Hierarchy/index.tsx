@@ -83,10 +83,7 @@ const HierarchyComponent: Hierarchy = (props) => {
   };
 
   useEffect(() => {
-    if(!props?.buttonName){
-      props.onSelect(selectItem);
-    }
-    
+    props.onSelect(selectItem);
   }, [selectItem]);
 
   const font = () => {

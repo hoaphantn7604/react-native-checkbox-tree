@@ -20,8 +20,7 @@ or
 | data               | Array                | Yes       |                  |
 | textField          | String               | Yes       |                  |
 | childField         | String               | Yes       |                  |
-| onSelect           | ()=> void            | Yes       |                  |
-| buttonName         | String               | No        |                  |
+| onSelect           | (item[])=> void      | Yes       |                  |
 | style              | ViewStyle            | No        |                  |
 | fontFamily         | String               | No        |                  |
 | textStyle          | TextStyle            | No        |                  |
