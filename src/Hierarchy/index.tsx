@@ -111,7 +111,7 @@ const HierarchyComponent: Hierarchy = (props) => {
               onPress={() => {
                 showChild(item);
               }}>
-              <Text style={[styles.showIcon, { color: iconColor }, isAndroid && !item.show && {paddingLeft: scale(5)}]}>{item.show ? '-' : '+'}</Text>
+              <Text style={[styles.showIcon, { color: iconColor }, isAndroid && item.show && {paddingLeft: scale(5)}]}>{item.show ? '-' : '+'}</Text>
             </TouchableOpacity>
           ) : <Text style={styles.showIcon}>{`  `}</Text>}
           <TouchableOpacity
