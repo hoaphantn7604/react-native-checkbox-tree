@@ -10,8 +10,17 @@ or
 ```
 
 ### RN Version < 0.60
+```js
+    react-native link react-native-checkbox-tree
+```
 
-`$ react-native link react-native-checkbox-tree`
+### IOS
+```js
+    cd ios && pod install
+```
+
+### Demo
+![](https://github.com/hoaphantn7604/file-upload/blob/master/document/checkboxtree/demo.png)
 
 #### Props
 
@@ -111,7 +120,7 @@ or
                 textStyle={{color: 'black', fontWeight: 'bold'}}
                 iconColor="black"
                 onSelect={item => {
-                console.log(`Selected ${item.length} item`);
+                    console.log(`Selected ${item.length} item`);
                 }}
             />
             </View>
