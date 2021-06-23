@@ -1,7 +1,7 @@
 {
   "name": "react-native-checkbox-tree",
   "title": "React Native Checkbox Tree",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A simple and elegant checkbox tree for React Native.",
   "main": "index.js",
   "scripts": {
