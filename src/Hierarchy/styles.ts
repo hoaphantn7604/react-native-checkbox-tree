@@ -1,14 +1,12 @@
 import { StyleSheet } from 'react-native';
-import { useScale } from '../utilsScale';
-
-const { scale, fontScale } = useScale;
 
 export const styles = StyleSheet.create({
     container: {
-      marginLeft: - scale(20)
+      marginLeft: - 20
     },
     item: {
-      marginLeft: scale(30),
+      marginLeft: 26,
+      marginVertical: 6
     },
     rowItem: {
       flexDirection: 'row',
@@ -19,34 +17,24 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
     },
     showIcon: {
-      fontSize: scale(30),
-      marginBottom: scale(5),
-      width: scale(15),
+      width: 26,
     },
     name: {
-      fontSize: fontScale(16),
-      flex: 1
-    },
-    tick: {
-      marginHorizontal: scale(13),
-      fontSize: scale(25),
-    },
-    unTick: {
-      marginHorizontal: scale(13),
-      fontSize: scale(30),
-      marginTop: 3
+      fontSize: 18,
+      flex: 1,
+      marginHorizontal: 8
     },
     btn: {
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: 'black',
-      borderRadius: scale(24),
-      marginTop: scale(10),
-      padding: scale(14)
+      borderRadius: 24,
+      marginTop: 10,
+      padding: 14
     },
     btnName: {
-      fontSize: fontScale(20),
+      fontSize: 20,
       color: 'white',
       fontWeight: 'bold',
     },

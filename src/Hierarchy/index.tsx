@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, TouchableOpacity, View, Text } from 'react-native';
-import { useDetectDevice, useScale } from '../utilsScale';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { styles } from './styles';
 import { Hierarchy } from './type';
 
-const { scale } = useScale;
-const {isAndroid, isIOS} = useDetectDevice;
 
 const defaultProps = {
   style: {},
@@ -16,14 +14,15 @@ const defaultProps = {
 let selectItem: any = [];
 
 const HierarchyComponent: Hierarchy = (props) => {
-  const { 
-    data, 
-    textField, 
-    childField, 
-    style, 
-    textStyle, 
-    fontFamily, 
-    iconColor, 
+  const {
+    data,
+    textField,
+    childField,
+    style,
+    textStyle,
+    iconColor = 'black',
+    checkIcon,
+    unCheckIcon,
   } = props;
 
   const [listData] = useState<any>(data);
@@ -86,15 +85,23 @@ const HierarchyComponent: Hierarchy = (props) => {
     props.onSelect(selectItem);
   }, [selectItem]);
 
-  const font = () => {
-    if (fontFamily) {
-      return {
-        fontFamily: fontFamily
+
+  const _renderIcon = (status: boolean) => {
+    if (status) {
+      if (checkIcon) {
+        return checkIcon;
+      } else {
+        return <Ionicons name='ios-checkbox-outline' size={26} color={iconColor} />
       }
+
     } else {
-      return {}
+      if (unCheckIcon) {
+        return unCheckIcon
+      } else {
+        return <Ionicons name='stop-outline' size={26} color={iconColor} />
+      }
     }
-  }
+  };
 
   const renderList = (item: any, childs: any, index: number) => {
     if (!item.show) {
@@ -111,7 +118,7 @@ const HierarchyComponent: Hierarchy = (props) => {
               onPress={() => {
                 showChild(item);
               }}>
-              <Text style={[styles.showIcon, { color: iconColor }, isAndroid && item.show && {paddingLeft: scale(5)}]}>{item.show ? '-' : '+'}</Text>
+              {item.show ? <Ionicons name='ios-remove' size={26} color={iconColor} /> : <Ionicons name='add-outline' size={26} color={iconColor} />}
             </TouchableOpacity>
           ) : <Text style={styles.showIcon}>{`  `}</Text>}
           <TouchableOpacity
@@ -124,8 +131,8 @@ const HierarchyComponent: Hierarchy = (props) => {
               }
             }}>
             <View style={styles.center}>
-              {item.tick ? <Text style={[styles.tick, { color: iconColor }]}>☑</Text> : <Text style={[isIOS ? styles.unTick : styles.tick, { color: iconColor }]}>☐</Text>}
-              <Text style={[styles.name, textStyle, font()]} numberOfLines={3}>{item[textField]}</Text>
+              {_renderIcon(item.tick)}
+              <Text style={[styles.name, textStyle]} numberOfLines={3}>{item[textField]}</Text>
             </View>
           </TouchableOpacity>
         </View>

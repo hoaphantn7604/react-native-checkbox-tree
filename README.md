@@ -2,16 +2,11 @@
 `react-native-checkbox-tree` A simple and elegant checkbox tree for React Native.
 ## Getting started
 ```js
-    npm install react-native-checkbox-tree --save
+    npm install react-native-checkbox-tree react-native-vector-icons --save
 ```
 or
 ```js
-    yarn add react-native-checkbox-tree
-```
-
-### RN Version < 0.60
-```js
-    react-native link react-native-checkbox-tree
+    yarn add react-native-checkbox-tree react-native-vector-icons
 ```
 
 ### IOS
@@ -24,16 +19,17 @@ or
 
 #### Props
 
-| Props              | Params               | isRequire | Description      |
-| ------------------ | -------------------- | --------- | ---------------- |
-| data               | Array                | Yes       |                  |
-| textField          | String               | Yes       |                  |
-| childField         | String               | Yes       |                  |
-| onSelect           | (item[])=> void      | Yes       |                  |
-| style              | ViewStyle            | No        |                  |
-| fontFamily         | String               | No        |                  |
-| textStyle          | TextStyle            | No        |                  |
-| iconColor          | String               | No        |                  |
+| Props              | Params               | isRequire | Description                     |
+| ------------------ | -------------------- | --------- | ------------------------------- |
+| data               | Array                | Yes       |                                 |
+| textField          | String               | Yes       |                                 |
+| childField         | String               | Yes       |                                 |
+| onSelect           | (item[])=> void      | Yes       |                                 |
+| style              | ViewStyle            | No        |                                 |
+| textStyle          | TextStyle            | No        |                                 |
+| checkIcon          | Element              | No        | Using react-native-vector-icons |
+| unCheckIcon        | Element              | No        | Using react-native-vector-icons |
+| iconColor          | String               | No        |                                 |
 
 ## Example
 ```javascript
