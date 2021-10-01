@@ -5,7 +5,6 @@ interface Props {
   textStyle: StyleProp<TextStyle>;
   checkIcon?:JSX.Element;
   unCheckIcon?: JSX.Element;
-  fontFamily?: string;
   iconColor: string;
   data: any[];
   textField: string;
