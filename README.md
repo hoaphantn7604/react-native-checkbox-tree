@@ -31,11 +31,12 @@ or
 | onSelect           | (item[])=> void      | Yes       |                                 |
 | style              | ViewStyle            | No        |                                 |
 | textStyle          | TextStyle            | No        |                                 |
+| iconSize           | Number               | No        |                                 |
+| iconColor          | String               | No        |                                 |
 | openIcon           | Element              | No        | Using react-native-vector-icons |
 | closeIcon          | Element              | No        | Using react-native-vector-icons |
 | checkIcon          | Element              | No        | Using react-native-vector-icons |
 | unCheckIcon        | Element              | No        | Using react-native-vector-icons |
-| iconColor          | String               | No        |                                 |
 | renderItem         | (item)=> Element     | No        | Customize text item             |
 
 ## Example
@@ -123,8 +124,9 @@ or
           childField="childs"
           textStyle={{ color: 'black' }}
           iconColor="black"
-          openIcon={<AntDesign name="arrowdown" size={20} />}
-          closeIcon={<AntDesign name="arrowright" size={20} />}
+          iconSize={26}
+          openIcon={<AntDesign name="arrowdown" size={26} />}
+          closeIcon={<AntDesign name="arrowright" size={26} />}
           renderItem={item => (
             <View style={styles.wrapItem}>
               <AntDesign

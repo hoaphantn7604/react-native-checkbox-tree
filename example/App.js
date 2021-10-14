@@ -81,8 +81,9 @@ const CheckboxTreenScreen = _props => {
         childField="childs"
         textStyle={{ color: 'black' }}
         iconColor="black"
-        openIcon={<AntDesign name="arrowdown" size={20} />}
-        closeIcon={<AntDesign name="arrowright" size={20} />}
+        iconSize={26}
+        openIcon={<AntDesign name="arrowdown" size={26} />}
+        closeIcon={<AntDesign name="arrowright" size={26} />}
         renderItem={item => (
           <View style={styles.wrapItem}>
             <AntDesign

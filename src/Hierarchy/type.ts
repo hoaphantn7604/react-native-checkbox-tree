@@ -7,6 +7,7 @@ interface Props {
   closeIcon?: JSX.Element;
   checkIcon?:JSX.Element;
   unCheckIcon?: JSX.Element;
+  iconSize?: number;
   iconColor: string;
   data: any[];
   textField: string;

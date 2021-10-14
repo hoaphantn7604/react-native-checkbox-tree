@@ -21,6 +21,7 @@ const HierarchyComponent: Hierarchy = (props) => {
     style,
     textStyle,
     iconColor = 'black',
+    iconSize = 26,
     openIcon,
     closeIcon,
     checkIcon,
@@ -94,14 +95,14 @@ const HierarchyComponent: Hierarchy = (props) => {
       if (checkIcon) {
         return checkIcon;
       } else {
-        return <Ionicons name='ios-checkbox-outline' size={26} color={iconColor} />
+        return <Ionicons name='ios-checkbox-outline' size={iconSize} color={iconColor} />
       }
 
     } else {
       if (unCheckIcon) {
         return unCheckIcon
       } else {
-        return <Ionicons name='stop-outline' size={26} color={iconColor} />
+        return <Ionicons name='stop-outline' size={iconSize} color={iconColor} />
       }
     }
   };
@@ -114,16 +115,16 @@ const HierarchyComponent: Hierarchy = (props) => {
       item.tick = false;
     }
     return (
-      <View style={styles.item} key={index}>
+      <View style={[styles.item, { marginLeft: iconSize}]} key={index}>
         <View style={styles.rowItem}>
           {childs && childs.length > 0 ? (
             <TouchableOpacity
               onPress={() => {
                 showChild(item);
               }}>
-              {item.show ? openIcon ? openIcon : <Ionicons name='ios-remove' size={26} color={iconColor} /> : closeIcon ? closeIcon : <Ionicons name='add-outline' size={26} color={iconColor} />}
+              {item.show ? openIcon ? openIcon : <Ionicons name='ios-remove' size={iconSize} color={iconColor} /> : closeIcon ? closeIcon : <Ionicons name='add-outline' size={iconSize} color={iconColor} />}
             </TouchableOpacity>
-          ) : <Text style={styles.showIcon}>{`  `}</Text>}
+          ) : <Text style={{ width: iconSize }}>{`  `}</Text>}
           <TouchableOpacity
             style={{ flex: 1 }}
             onPress={() => {
