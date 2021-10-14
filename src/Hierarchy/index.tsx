@@ -21,8 +21,11 @@ const HierarchyComponent: Hierarchy = (props) => {
     style,
     textStyle,
     iconColor = 'black',
+    openIcon,
+    closeIcon,
     checkIcon,
     unCheckIcon,
+    renderItem
   } = props;
 
   const [listData] = useState<any>(data);
@@ -118,7 +121,7 @@ const HierarchyComponent: Hierarchy = (props) => {
               onPress={() => {
                 showChild(item);
               }}>
-              {item.show ? <Ionicons name='ios-remove' size={26} color={iconColor} /> : <Ionicons name='add-outline' size={26} color={iconColor} />}
+              {item.show ? openIcon ? openIcon : <Ionicons name='ios-remove' size={26} color={iconColor} /> : closeIcon ? closeIcon : <Ionicons name='add-outline' size={26} color={iconColor} />}
             </TouchableOpacity>
           ) : <Text style={styles.showIcon}>{`  `}</Text>}
           <TouchableOpacity
@@ -132,7 +135,7 @@ const HierarchyComponent: Hierarchy = (props) => {
             }}>
             <View style={styles.center}>
               {_renderIcon(item.tick)}
-              <Text style={[styles.name, textStyle]} numberOfLines={3}>{item[textField]}</Text>
+              {renderItem ? renderItem(item) : <Text style={[styles.name, textStyle]} numberOfLines={3}>{item[textField]}</Text>}
             </View>
           </TouchableOpacity>
         </View>

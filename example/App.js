@@ -1,6 +1,7 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import CheckboxTree from 'react-native-checkbox-tree';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const recursiveData = [
   {
@@ -71,15 +72,27 @@ const recursiveData = [
   },
 ];
 
-const RecursiveScreen = _props => {
+const CheckboxTreenScreen = _props => {
   return (
     <View style={styles.container}>
       <CheckboxTree
         data={recursiveData}
-        textField="shopCode"
+        textField="shopName"
         childField="childs"
-        textStyle={{color: 'black', fontWeight: 'bold'}}
+        textStyle={{ color: 'black' }}
         iconColor="black"
+        openIcon={<AntDesign name="arrowdown" size={20} />}
+        closeIcon={<AntDesign name="arrowright" size={20} />}
+        renderItem={item => (
+          <View style={styles.wrapItem}>
+            <AntDesign
+              style={styles.iconItem}
+              name="folderopen"
+              size={20}
+            />
+            <Text style={styles.text}>{item.shopName}</Text>
+          </View>
+        )}
         onSelect={item => {
           console.log(`Selected ${item.length} item`);
         }}
@@ -88,11 +101,21 @@ const RecursiveScreen = _props => {
   );
 };
 
-export default RecursiveScreen;
+export default CheckboxTreenScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 40,
   },
+  wrapItem: {
+    flexDirection: 'row',
+    marginVertical: 8
+  },
+  text: {
+    fontSize: 18
+  },
+  iconItem:{
+    marginHorizontal: 8
+  }
 });
