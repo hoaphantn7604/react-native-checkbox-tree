@@ -39,9 +39,11 @@ or
 | unCheckIcon        | Element              | No        | Using react-native-vector-icons |
 | renderItem         | (item)=> Element     | No        | Customize text item             |
 
-| Method             | Description                     |
-| ------------------ | ------------------------------- |
-| clear              | Refresh data                    |
+#### Method
+| API                | Description                                           |
+| ------------------ | ----------------------------------------------------- |
+| clear              | Refresh data                                          |
+| setSelectedItem    | The input value is the result returned from onSelect  |
 
 ## Example
 ```javascript

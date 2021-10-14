@@ -11,7 +11,8 @@ const defaultProps = {
   iconColor: 'black'
 }
 
-let selectItem: any = [];
+let selectItem: any[] = [];
+let defaultValue: any[] = []
 
 const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
   const {
@@ -33,7 +34,7 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
   const [key, setKey] = useState(Math.random());
 
   useImperativeHandle(ref, () => {
-    return { clear: clear };
+    return { clear, setSelectedItem };
   });
 
   const clear = () => {
@@ -43,12 +44,28 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
   const onClear = (item: any) => {
     item.tick = false;
     item.show = false;
-    parent(item.parent);
     if (item[childField]) {
       item[childField].map((child: any) => onClear(child));
     }
     reload();
   };
+
+  const setSelectedItem = (data: any[]) => {
+    defaultValue = data;
+    onDefault(listData[0]);
+  }
+
+  const onDefault = (item: any) => {
+    const check = defaultValue.findIndex(e => e[textField] === item[textField]);
+    if(check >= 0){
+      item.tick = true;
+    }
+    if (item[childField]) {
+      item[childField].map((child: any) => onDefault(child));
+    }
+    reload();
+  };
+
 
   const parent = (item: any) => {
     if (item && item[childField]) {
