@@ -39,6 +39,10 @@ or
 | unCheckIcon        | Element              | No        | Using react-native-vector-icons |
 | renderItem         | (item)=> Element     | No        | Customize text item             |
 
+| Method             | Description                     |
+| ------------------ | ------------------------------- |
+| clear              | Refresh data                    |
+
 ## Example
 ```javascript
   import React from 'react';

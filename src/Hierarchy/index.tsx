@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { FlatList, TouchableOpacity, View, Text } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { styles } from './styles';
@@ -13,7 +13,7 @@ const defaultProps = {
 
 let selectItem: any = [];
 
-const HierarchyComponent: Hierarchy = (props) => {
+const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
   const {
     data,
     textField,
@@ -31,6 +31,24 @@ const HierarchyComponent: Hierarchy = (props) => {
 
   const [listData] = useState<any>(data);
   const [key, setKey] = useState(Math.random());
+
+  useImperativeHandle(ref, () => {
+    return { clear: clear };
+  });
+
+  const clear = () => {
+    onClear(listData[0]);
+  };
+
+  const onClear = (item: any) => {
+    item.tick = false;
+    item.show = false;
+    parent(item.parent);
+    if (item[childField]) {
+      item[childField].map((child: any) => onClear(child));
+    }
+    reload();
+  };
 
   const parent = (item: any) => {
     if (item && item[childField]) {
@@ -115,7 +133,7 @@ const HierarchyComponent: Hierarchy = (props) => {
       item.tick = false;
     }
     return (
-      <View style={[styles.item, { marginLeft: iconSize}]} key={index}>
+      <View style={[styles.item, { marginLeft: iconSize }]} key={index}>
         <View style={styles.rowItem}>
           {childs && childs.length > 0 ? (
             <TouchableOpacity
@@ -164,7 +182,7 @@ const HierarchyComponent: Hierarchy = (props) => {
       />
     </View>
   );
-};
+});
 
 HierarchyComponent.defaultProps = defaultProps;
 
