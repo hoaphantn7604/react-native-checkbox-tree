@@ -1,43 +1,40 @@
 ## react-native-checkbox-tree
-A simple and elegant checkbox tree for React Native.
+A simple and elegant checkbox tree for React Native. Implemented using [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 
 ## Getting started
 ```js
-    npm install react-native-checkbox-tree react-native-vector-icons --save
+    npm install react-native-checkbox-tree --save
 ```
 or
 ```js
-    yarn add react-native-checkbox-tree react-native-vector-icons
+    yarn add react-native-checkbox-tree
 ```
 
-### IOS
-```js
-    cd ios && pod install
-```
+Now we need to install [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons).
 
 #### Source code demo
-- [react-native-template-components](https://github.com/hoaphantn7604/react-native-template-components) A beautiful template for React Native.
+[react-native-template-components](https://github.com/hoaphantn7604/react-native-template-components) A beautiful template for React Native.
 
 ### Demo
 ![](https://github.com/hoaphantn7604/file-upload/blob/master/document/checkboxtree/demo.png)
 
 #### Props
 
-| Props              | Params               | isRequire | Description                     |
-| ------------------ | -------------------- | --------- | ------------------------------- |
-| data               | Array                | Yes       |                                 |
-| textField          | String               | Yes       |                                 |
-| childField         | String               | Yes       |                                 |
-| onSelect           | (item[])=> void      | Yes       |                                 |
-| style              | ViewStyle            | No        |                                 |
-| textStyle          | TextStyle            | No        |                                 |
-| iconSize           | Number               | No        |                                 |
-| iconColor          | String               | No        |                                 |
-| openIcon           | Element              | No        | Using react-native-vector-icons |
-| closeIcon          | Element              | No        | Using react-native-vector-icons |
-| checkIcon          | Element              | No        | Using react-native-vector-icons |
-| unCheckIcon        | Element              | No        | Using react-native-vector-icons |
-| renderItem         | (item)=> Element     | No        | Customize text item             |
+| Props              | Params               | isRequire | Description                                                  |
+| ------------------ | -------------------- | --------- | ------------------------------------------------------------ |
+| data               | Array                | Yes       | Data is a plain array                                        |
+| textField          | String               | Yes       | Extract the text from the data item                          |
+| childField         | String               | Yes       | Extract the field children from the data item                |
+| onSelect           | (item[])=> void      | Yes       | Selection callback                                           |
+| style              | ViewStyle            | No        | Styling for container view                                   |
+| textStyle          | TextStyle            | No        | Styling for text                                             |
+| iconSize           | Number               | No        | Customize icon size                                          |
+| iconColor          | String               | No        | Customize icon color                                         |
+| openIcon           | Element              | No        | Customize open icon. Only using react-native-vector-icons    |
+| closeIcon          | Element              | No        | Customize close icon. Only using react-native-vector-icons   |
+| checkIcon          | Element              | No        | Customize check icon. Only using react-native-vector-icons   |
+| unCheckIcon        | Element              | No        | Customize uncheck icon. Only using react-native-vector-icons |
+| renderItem         | (item)=> Element     | No        | Takes an item from data and renders it into the list         |
 
 #### Method
 | API                | Description                                           |
