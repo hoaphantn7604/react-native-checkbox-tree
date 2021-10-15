@@ -11,6 +11,13 @@ or
 ```
 
 Now we need to install [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons).
+```js
+    npm install react-native-vector-icons --save
+```
+or
+```js
+    yarn add react-native-vector-icons
+```
 
 #### Source code demo
 [react-native-template-components](https://github.com/hoaphantn7604/react-native-template-components) A beautiful template for React Native.
