@@ -30,7 +30,7 @@ or
 | Props              | Params               | isRequire | Description                                                  |
 | ------------------ | -------------------- | --------- | ------------------------------------------------------------ |
 | data               | Array                | Yes       | Data is a plain array                                        |
-| textField          | String               | Yes       | Extract the text from the data item                          |
+| textField          | String               | Yes       | Extract the lable from the data item                         |
 | childField         | String               | Yes       | Extract the field children from the data item                |
 | onSelect           | (item[])=> void      | Yes       | Selection callback                                           |
 | style              | ViewStyle            | No        | Styling for container view                                   |
