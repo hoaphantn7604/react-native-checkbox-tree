@@ -27,6 +27,8 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
     closeIcon,
     checkIcon,
     unCheckIcon,
+    autoSelectParents = true,
+    autoSelectChilds = true,
     renderItem
   } = props;
 
@@ -57,10 +59,10 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
 
   const onDefault = (item: any) => {
     const check = defaultValue.findIndex(e => e[textField] === item[textField]);
-    if(check >= 0){
+    if (check >= 0) {
       item.tick = true;
     }
-    if (item[childField]) {
+    if (item[childField] && autoSelectChilds) {
       item[childField].map((child: any) => onDefault(child));
     }
     reload();
@@ -82,8 +84,10 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
 
   const onTick = (item: any) => {
     item.tick = true;
-    parent(item.parent);
-    if (item[childField]) {
+    if (autoSelectParents) {
+      parent(item.parent);
+    }
+    if (item[childField] && autoSelectChilds) {
       item[childField].map((child: any) => onTick(child));
     }
     reload();
@@ -91,8 +95,10 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
 
   const onUnTick = (item: any) => {
     item.tick = false;
-    parent(item.parent);
-    if (item[childField]) {
+    if (autoSelectParents) {
+      parent(item.parent);
+    }
+    if (item[childField] && autoSelectChilds) {
       item[childField].map((child: any) => onUnTick(child));
     }
     reload();

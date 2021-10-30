@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 interface Props {
@@ -12,6 +13,8 @@ interface Props {
   data: any[];
   textField: string;
   childField: string;
+  autoSelectParents?: boolean;
+  autoSelectChilds?: boolean;
   renderItem?: (item: any)=> JSX.Element;
   onSelect: (data: any) => void;
 }

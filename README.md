@@ -37,6 +37,8 @@ or
 | textStyle          | TextStyle            | No        | Styling for text                                             |
 | iconSize           | Number               | No        | Customize icon size                                          |
 | iconColor          | String               | No        | Customize icon color                                         |
+| autoSelectChilds   | Boolean              | No        | Auto select childs, default is true                          |
+| autoSelectParents  | Boolean              | No        | Auto select parents, default is true                         |
 | openIcon           | Element              | No        | Customize open icon. Only using react-native-vector-icons    |
 | closeIcon          | Element              | No        | Customize close icon. Only using react-native-vector-icons   |
 | checkIcon          | Element              | No        | Customize check icon. Only using react-native-vector-icons   |
