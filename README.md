@@ -27,23 +27,23 @@ or
 
 #### Props
 
-| Props              | Params               | isRequire | Description                                                  |
-| ------------------ | -------------------- | --------- | ------------------------------------------------------------ |
-| data               | Array                | Yes       | Data is a plain array                                        |
-| textField          | String               | Yes       | Extract the lable from the data item                         |
-| childField         | String               | Yes       | Extract the field children from the data item                |
-| onSelect           | (item[])=> void      | Yes       | Selection callback                                           |
-| style              | ViewStyle            | No        | Styling for container view                                   |
-| textStyle          | TextStyle            | No        | Styling for text                                             |
-| iconSize           | Number               | No        | Customize icon size                                          |
-| iconColor          | String               | No        | Customize icon color                                         |
-| autoSelectChilds   | Boolean              | No        | Auto select childs, default is true                          |
-| autoSelectParents  | Boolean              | No        | Auto select parents, default is true                         |
-| openIcon           | Element              | No        | Customize open icon. Only using react-native-vector-icons    |
-| closeIcon          | Element              | No        | Customize close icon. Only using react-native-vector-icons   |
-| checkIcon          | Element              | No        | Customize check icon. Only using react-native-vector-icons   |
-| unCheckIcon        | Element              | No        | Customize uncheck icon. Only using react-native-vector-icons |
-| renderItem         | (item)=> Element     | No        | Takes an item from data and renders it into the list         |
+| Props              | Params               | isRequire | Description                                                               |
+| ------------------ | -------------------- | --------- | ------------------------------------------------------------------------- |
+| data               | Array                | Yes       | Data is a plain array                                                     |
+| textField          | String               | Yes       | Extract the lable from the data item                                      |
+| childField         | String               | Yes       | Extract the field children from the data item                             |
+| onSelect           | (item[])=> void      | Yes       | Selection callback                                                        |
+| style              | ViewStyle            | No        | Styling for container view                                                |
+| textStyle          | TextStyle            | No        | Styling for text                                                          |
+| iconSize           | Number               | No        | Customize icon size                                                       |
+| iconColor          | String               | No        | Customize icon color                                                      |
+| autoSelectChilds   | Boolean              | No        | Automatically select childs when selecting an item, default is true       |
+| autoSelectParents  | Boolean              | No        | Automatically select parent when all childs are selected, default is true |
+| openIcon           | Element              | No        | Customize open icon. Only using react-native-vector-icons                 |
+| closeIcon          | Element              | No        | Customize close icon. Only using react-native-vector-icons                |
+| checkIcon          | Element              | No        | Customize check icon. Only using react-native-vector-icons                |
+| unCheckIcon        | Element              | No        | Customize uncheck icon. Only using react-native-vector-icons              |
+| renderItem         | (item)=> Element     | No        | Takes an item from data and renders it into the list                      |
 
 #### Method
 | API                | Description                                           |
