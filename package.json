@@ -1,7 +1,7 @@
 {
   "name": "react-native-checkbox-tree",
   "title": "A simple and elegant checkbox tree for React Native.",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "A simple and elegant checkbox tree for React Native.",
   "main": "index.ts",
   "scripts": {
@@ -29,6 +29,9 @@
   "peerDependencies": {
     "react": ">=16.8.1",
     "react-native": ">=0.60.0-rc.0 <1.0.x"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "react": "^16.9.0",

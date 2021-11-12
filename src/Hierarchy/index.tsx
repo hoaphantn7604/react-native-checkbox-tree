@@ -3,7 +3,7 @@ import { FlatList, TouchableOpacity, View, Text } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { styles } from './styles';
 import { Hierarchy } from './type';
-
+import _ from 'lodash';
 
 const defaultProps = {
   style: {},
@@ -32,7 +32,7 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
     renderItem
   } = props;
 
-  const [listData] = useState<any>(data);
+  const [listData] = useState<any[]>(_.cloneDeep(data));
   const [key, setKey] = useState(Math.random());
 
   useImperativeHandle(ref, () => {
@@ -127,7 +127,14 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    props.onSelect(selectItem);
+    const selectedItem =_.cloneDeep(selectItem).map((e:any)=> {
+      delete e.parent;
+      delete e.childs;
+      delete e.show;
+      delete e.tick;
+      return e;
+    });
+    props.onSelect(selectedItem);
   }, [selectItem]);
 
 
@@ -210,5 +217,3 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
 HierarchyComponent.defaultProps = defaultProps;
 
 export default HierarchyComponent;
-
-
