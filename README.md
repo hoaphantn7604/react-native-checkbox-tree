@@ -44,7 +44,7 @@ or
 | closeIcon          | Element              | No        | Customize close icon. Only using react-native-vector-icons                |
 | checkIcon          | Element              | No        | Customize check icon. Only using react-native-vector-icons                |
 | unCheckIcon        | Element              | No        | Customize uncheck icon. Only using react-native-vector-icons              |
-| renderItem         | (item)=> Element     | No        | Takes an item from data and renders it into the list                      |
+| renderItem         | (item, isSelect, isOpen, onOpen, onClose, onSelect)=> Element | No | Takes an item from data and renders it into the list |
 
 #### Method
 | API                | Description                                           |

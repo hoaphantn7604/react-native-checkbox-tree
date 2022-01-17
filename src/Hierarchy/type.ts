@@ -1,12 +1,21 @@
 import React from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
+interface RenderItem {
+  item: any;
+  isSelect: boolean;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+  onSelect: () => void;
+}
+
 interface Props {
   style?: StyleProp<ViewStyle>;
   textStyle: StyleProp<TextStyle>;
-  openIcon?:JSX.Element;
+  openIcon?: JSX.Element;
   closeIcon?: JSX.Element;
-  checkIcon?:JSX.Element;
+  checkIcon?: JSX.Element;
   unCheckIcon?: JSX.Element;
   iconSize?: number;
   iconColor: string;
@@ -15,7 +24,7 @@ interface Props {
   childField: string;
   autoSelectParents?: boolean;
   autoSelectChilds?: boolean;
-  renderItem?: (item: any)=> JSX.Element;
+  renderItem?: ({ item, isSelect, isOpen, onOpen, onClose, onSelect }: RenderItem) => JSX.Element;
   onSelect: (data: any) => void;
 }
 

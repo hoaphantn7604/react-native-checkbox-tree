@@ -91,6 +91,7 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
       item[childField].map((child: any) => onTick(child));
     }
     reload();
+    console.log('tick')
   };
 
   const onUnTick = (item: any) => {
@@ -102,6 +103,7 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
       item[childField].map((child: any) => onUnTick(child));
     }
     reload();
+    console.log('unTick')
   };
 
   const showChild = (item: any) => {
@@ -127,7 +129,7 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    const selectedItem =_.cloneDeep(selectItem).map((e:any)=> {
+    const selectedItem = _.cloneDeep(selectItem).map((e: any) => {
       delete e.parent;
       delete e.childs;
       delete e.show;
@@ -164,7 +166,7 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
     }
     return (
       <View style={[styles.item, { marginLeft: iconSize }]} key={index}>
-        <View style={styles.rowItem}>
+        {renderItem ? renderItem({ item: item, isSelect: item.tick, isOpen: item.show, onOpen: () => { showChild(item) }, onClose: () => { showChild(item) }, onSelect: () => { !item.tick ? onTick(item) : onUnTick(item) } }) : <View style={styles.rowItem}>
           {childs && childs.length > 0 ? (
             <TouchableOpacity
               onPress={() => {
@@ -184,10 +186,10 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
             }}>
             <View style={styles.center}>
               {_renderIcon(item.tick)}
-              {renderItem ? renderItem(item) : <Text style={[styles.name, textStyle]} numberOfLines={3}>{item[textField]}</Text>}
+              <Text style={[styles.name, textStyle]} numberOfLines={3}>{item[textField]}</Text>
             </View>
           </TouchableOpacity>
-        </View>
+        </View>}
         <View style={[!item.show && { height: 0 }]}>
           {childs &&
             childs.map((data: any, index: number) => {
