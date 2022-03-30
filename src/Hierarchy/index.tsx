@@ -54,17 +54,19 @@ const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
 
   const setSelectedItem = (data: any[]) => {
     defaultValue = data;
-    onDefault(listData[0]);
+    onDefault(listData);
   }
 
-  const onDefault = (item: any) => {
-    const check = defaultValue.findIndex(e => e[textField] === item[textField]);
-    if (check >= 0) {
-      item.tick = true;
-    }
-    if (item[childField] && autoSelectChilds) {
-      item[childField].map((child: any) => onDefault(child));
-    }
+  const onDefault = (items: any) => {
+    items.map((item: any) => {
+      const check = defaultValue.findIndex(e => e[textField] === item[textField]);
+      if (check >= 0) {
+        item.tick = true;
+      }
+      if (item[childField] && autoSelectChilds) {
+        item[childField].map(() => onDefault(item[childField]));
+      }
+    })
     reload();
   };
 
