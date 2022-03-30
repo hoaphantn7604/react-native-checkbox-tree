@@ -13,10 +13,10 @@ interface RenderItem {
 interface Props {
   style?: StyleProp<ViewStyle>;
   textStyle: StyleProp<TextStyle>;
-  openIcon?: JSX.Element;
-  closeIcon?: JSX.Element;
-  checkIcon?: JSX.Element;
-  unCheckIcon?: JSX.Element;
+  openIcon?: React.ReactNode;
+  closeIcon?: React.ReactNode;
+  checkIcon?: React.ReactNode;
+  unCheckIcon?: React.ReactNode;
   iconSize?: number;
   iconColor: string;
   data: any[];
@@ -24,8 +24,8 @@ interface Props {
   childField: string;
   autoSelectParents?: boolean;
   autoSelectChilds?: boolean;
-  renderItem?: ({ item, isSelect, isOpen, onOpen, onClose, onSelect }: RenderItem) => JSX.Element;
+  renderItem?: ({ item, isSelect, isOpen, onOpen, onClose, onSelect }: RenderItem) => React.ReactNode;
   onSelect: (data: any) => void;
 }
 
-export type Hierarchy = React.FC<Props>
+export type Hierarchy = Props

@@ -14,7 +14,7 @@ const defaultProps = {
 let selectItem: any[] = [];
 let defaultValue: any[] = []
 
-const HierarchyComponent: Hierarchy = React.forwardRef((props, ref) => {
+const HierarchyComponent = React.forwardRef((props: Hierarchy, ref) => {
   const {
     data,
     textField,

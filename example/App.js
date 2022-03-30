@@ -1,7 +1,8 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import CheckboxTree from 'react-native-checkbox-tree';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const recursiveData = [
   {
@@ -72,11 +73,38 @@ const recursiveData = [
   },
 ];
 
-const CheckboxTreenScreen = _props => {
+export interface Props {}
+
+const CheckboxTreeScreen: React.FC<Props> = _props => {
+  const [data] = useState<any[]>(recursiveData);
+  const ref: any = useRef();
+
+  useEffect(() => {
+    if (ref && ref.current) {
+      ref.current.setSelectedItem([
+        {
+          shopReportName: 'Name 1',
+          shopCode: '00001',
+          shopType: '2',
+          shopId: 1,
+          shopName: 'Name 1',
+        },
+        {
+          shopReportName: 'Name 2',
+          shopCode: '00002',
+          shopType: '3',
+          shopId: 2,
+          shopName: 'Name 2',
+        },
+      ]);
+    }
+  }, [ref]);
+
   return (
     <View style={styles.container}>
       <CheckboxTree
-        data={recursiveData}
+        ref={ref}
+        data={data}
         textField="shopName"
         childField="childs"
         textStyle={{ color: 'black' }}
@@ -84,14 +112,24 @@ const CheckboxTreenScreen = _props => {
         iconSize={26}
         openIcon={<AntDesign name="arrowdown" size={26} />}
         closeIcon={<AntDesign name="arrowright" size={26} />}
-        renderItem={item => (
+        renderItem={({ item, isSelect, isOpen, onOpen, onClose, onSelect }) => (
           <View style={styles.wrapItem}>
-            <AntDesign
-              style={styles.iconItem}
-              name="folderopen"
-              size={20}
-            />
-            <Text style={styles.text}>{item.shopName}</Text>
+            {isOpen ? (
+              <TouchableOpacity onPress={onClose}>
+                <AntDesign size={30} name="arrowright" />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={onOpen}>
+                <AntDesign size={30} name="arrowdown" />
+              </TouchableOpacity>
+            )}
+            <TouchableOpacity onPress={onSelect}>
+              <Ionicons
+                size={26}
+                name={isSelect ? 'checkbox-outline' : 'square-outline'}
+              />
+            </TouchableOpacity>
+            <Text style={styles.name}>{item.shopName}</Text>
           </View>
         )}
         onSelect={item => {
@@ -102,21 +140,23 @@ const CheckboxTreenScreen = _props => {
   );
 };
 
-export default CheckboxTreenScreen;
+export default CheckboxTreeScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 40,
+    padding: 20,
   },
   wrapItem: {
     flexDirection: 'row',
-    marginVertical: 8
+    alignItems: 'center',
+    marginVertical: 8,
   },
-  text: {
-    fontSize: 18
+  icon: {
+    marginHorizontal: 8,
   },
-  iconItem:{
-    marginHorizontal: 8
-  }
+  name: {
+    fontSize: 20,
+    marginLeft: 8,
+  },
 });
