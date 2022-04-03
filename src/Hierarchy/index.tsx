@@ -40,31 +40,40 @@ const HierarchyComponent = React.forwardRef((props: Hierarchy, ref) => {
   });
 
   const clear = () => {
-    onClear(listData[0]);
+    onClear(listData);
   };
 
-  const onClear = (item: any) => {
-    item.tick = false;
-    item.show = false;
-    if (item[childField]) {
-      item[childField].map((child: any) => onClear(child));
-    }
+  const onClear = (items: any[]) => {
+    items.map((item: any) => {
+      item.tick = false;
+      item.show = false;
+      if (item[childField]) {
+        onClear(item[childField]);
+      }
+    })
     reload();
   };
 
   const setSelectedItem = (data: any[]) => {
     defaultValue = data;
-    onDefault(listData[0]);
+    onDefault(listData, false);
   }
 
-  const onDefault = (item: any) => {
-    const check = defaultValue.findIndex(e => e[textField] === item[textField]);
-    if (check >= 0) {
-      item.tick = true;
-    }
-    if (item[childField] && autoSelectChilds) {
-      item[childField].map((child: any) => onDefault(child));
-    }
+  const onDefault = (items: any[], tick: boolean = false) => {
+    items.map((item: any) => {
+      const check = _.filter(defaultValue, (e: any) => e[textField] === item[textField]).length > 0;
+      if (tick) {
+        item.tick = true;
+      } else {
+        if (check) {
+          item.tick = true;
+        }
+      }
+
+      if (item[childField]) {
+        onDefault(item[childField], autoSelectChilds);
+      }
+    })
     reload();
   };
 
