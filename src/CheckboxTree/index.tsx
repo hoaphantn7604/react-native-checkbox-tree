@@ -14,7 +14,7 @@ const defaultProps = {
 let selectItem: any[] = [];
 let defaultValue: any[] = []
 
-const CheckboxTreeComponent = React.forwardRef((props: CheckboxTreeProps, ref) => {
+const CheckboxTreeComponent = React.forwardRef<any, CheckboxTreeProps>((props, ref) => {
   const {
     data,
     textField,

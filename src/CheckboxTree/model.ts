@@ -1,6 +1,11 @@
 import React from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
+export interface ICheckboxTreeRef {
+  clear: () => void;
+  setSelectedItem: (any: any[]) => void;
+}
+
 interface IRenderItem {
   item: any;
   isSelect: boolean;
