@@ -1,3 +1,3 @@
-import CheckboxTree from './src/Hierarchy';
+import CheckboxTree from './src/CheckboxTree';
 
 export default CheckboxTree;

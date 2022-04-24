@@ -2,7 +2,7 @@ import React, { useEffect, useImperativeHandle, useState } from 'react';
 import { FlatList, TouchableOpacity, View, Text } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { styles } from './styles';
-import { Hierarchy } from './type';
+import { CheckboxTreeProps } from './model';
 import _ from 'lodash';
 
 const defaultProps = {
@@ -14,7 +14,7 @@ const defaultProps = {
 let selectItem: any[] = [];
 let defaultValue: any[] = []
 
-const HierarchyComponent = React.forwardRef((props: Hierarchy, ref) => {
+const CheckboxTreeComponent = React.forwardRef((props: CheckboxTreeProps, ref) => {
   const {
     data,
     textField,
@@ -225,6 +225,6 @@ const HierarchyComponent = React.forwardRef((props: Hierarchy, ref) => {
   );
 });
 
-HierarchyComponent.defaultProps = defaultProps;
+CheckboxTreeComponent.defaultProps = defaultProps;
 
-export default HierarchyComponent;
+export default CheckboxTreeComponent;

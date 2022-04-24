@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
-interface RenderItem {
+interface IRenderItem {
   item: any;
   isSelect: boolean;
   isOpen: boolean;
@@ -10,7 +10,7 @@ interface RenderItem {
   onSelect: () => void;
 }
 
-interface Props {
+interface IProps {
   style?: StyleProp<ViewStyle>;
   textStyle: StyleProp<TextStyle>;
   openIcon?: React.ReactNode;
@@ -24,8 +24,8 @@ interface Props {
   childField: string;
   autoSelectParents?: boolean;
   autoSelectChilds?: boolean;
-  renderItem?: ({ item, isSelect, isOpen, onOpen, onClose, onSelect }: RenderItem) => React.ReactNode;
+  renderItem?: ({ item, isSelect, isOpen, onOpen, onClose, onSelect }: IRenderItem) => React.ReactNode;
   onSelect: (data: any) => void;
 }
 
-export type Hierarchy = Props
+export type CheckboxTreeProps = IProps
