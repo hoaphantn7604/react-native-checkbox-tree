@@ -1,5 +1,4 @@
-import React from 'react';
-import { StyleProp, TextStyle, ViewStyle } from 'react-native';
+import type { StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export interface ICheckboxTreeRef {
   clear: () => void;
@@ -15,13 +14,13 @@ interface IRenderItem {
   onSelect: () => void;
 }
 
-interface IProps {
+export interface CheckboxTreeProps {
   style?: StyleProp<ViewStyle>;
   textStyle: StyleProp<TextStyle>;
-  openIcon?: React.ReactNode;
-  closeIcon?: React.ReactNode;
-  checkIcon?: React.ReactNode;
-  unCheckIcon?: React.ReactNode;
+  openIcon?: JSX.Element;
+  closeIcon?: JSX.Element;
+  checkIcon?: JSX.Element;
+  unCheckIcon?: JSX.Element;
   iconSize?: number;
   iconColor: string;
   data: any[];
@@ -29,8 +28,13 @@ interface IProps {
   childField: string;
   autoSelectParents?: boolean;
   autoSelectChilds?: boolean;
-  renderItem?: ({ item, isSelect, isOpen, onOpen, onClose, onSelect }: IRenderItem) => React.ReactNode;
+  renderItem?: ({
+    item,
+    isSelect,
+    isOpen,
+    onOpen,
+    onClose,
+    onSelect,
+  }: IRenderItem) => JSX.Element;
   onSelect: (data: any) => void;
 }
-
-export type CheckboxTreeProps = IProps
